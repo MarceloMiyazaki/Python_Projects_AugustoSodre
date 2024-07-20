@@ -12,6 +12,8 @@ def multiplication(num1, num2):
 def division(num1, num2):
     if (num2 == 0):
         print("Error - Can't divide by zero")
+    else:
+        return num1 / num2
 
 def startHomeScreen():
     print("\nWhat operation are we up to?")

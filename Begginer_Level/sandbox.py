@@ -19,4 +19,4 @@ for c in name:
 for x in first_name:
     first_name_count += 1
 
-print(f"Your first name is {first_name} and it has {first_name_count} characters")
+print(f"Your first name is {first_name} and it has {first_name_count} characters\n")
