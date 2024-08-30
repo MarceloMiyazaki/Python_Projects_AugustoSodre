@@ -1,3 +1,9 @@
+'''
+Exercício 6: Crie um programa que gerencie o banco de dados de uma biblioteca. 
+O programa deve permitir adicionar um novo livro (como uma lista contendo título, autor e ano),
+listar todos os livros, e permitir a busca de livros pelo título.
+'''
+
 import os
 
 lista_livros_total = []
@@ -27,6 +33,7 @@ def adicionar_livro():
     lista_livros_total.append(novo_livro)
     print()
     
+
 
 def remover_livro():
     print("--------------------------------")
