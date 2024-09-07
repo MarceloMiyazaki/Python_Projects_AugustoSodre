@@ -40,7 +40,6 @@ def print_matriz(matriz):
             print(f"{matriz[i][j]:5.2f}", end=" ")
         print("]")
 
-
 def opera_matriz(matriz_1, matriz_2):
     lin1 = len(matriz_1)
     col1 = len(matriz_1[0])
@@ -73,7 +72,7 @@ def opera_matriz(matriz_1, matriz_2):
         return mat_resultado
     
     elif opcao == 2:
-        
+
         if lin1 != lin2 and col1 != col2:
             print("As matrizes devem ser de mesma ordem!")
             return
@@ -115,20 +114,63 @@ def multiplica_matriz(matriz_1, matriz_2):
     
     return mat_resultado
 
+def troca_linhas(A, k):
+    lin = len(A)
+    i = k + 1
+    while i < lin:
+        if A[i][k] != 0:
+            for j in range(k, lin):
+                A[k][j], A[i][j] = A[i][j], A[k][j]
+            return False
+        i = i + 1
+    else:
+        return True
 
+def calc_det(matriz):
+    lin = len(matriz)
+    col = len(matriz)
+
+    if (lin != col):
+        print("Matrizes devem ser de mesma ordem!")
+        return
+
+    if (lin == 1):
+        return matriz[0][0]
+    
+    if (lin == 2):
+        return matriz[0][0] * matriz[1][1] - matriz[0][1] * matriz[1][0]
     
 
+    num_de_troca_de_linhas = 0
+    for k in range(lin - 1): # Andando na diagonal
+        for i in range(k+1, lin): # Andando as linhas abaixo da diagonal
+            if matriz[k][k] == 0: # Verifica se o pivô é zero
+                num_de_troca_de_linhas += 1
+                if troca_linhas(matriz, k):
+                    return 0
+            m = -matriz[i][k] / matriz[k][k]
+            for j in range(k, col): # Andando nas linhas que estão sendo atualizadas
+                matriz[i][j] = matriz[k][j]*m + matriz[i][j]
+    resultado = 1
+    for k in range(lin): # Multiplicando os elementos da diagonal principal (da matriz triagular)
+        resultado = resultado * matriz[k][k] * (-1)**num_de_troca_de_linhas
 
-matriz_principal  = cria_matriz()
-print_matriz(matriz_principal)
+    return resultado
 
-matriz_secundaria = cria_matriz()
-print_matriz(matriz_secundaria)
+
+# matriz_principal  = cria_matriz()
+# print_matriz(matriz_principal)
+
+# matriz_secundaria = cria_matriz()
+# print_matriz(matriz_secundaria)
 
 #print_matriz(mult_escalar(matriz_secundaria))
 
-try:
-    print_matriz(opera_matriz(matriz_principal, matriz_secundaria))
-except:
-    print("Deu algo errado!")
+# try:
+#     print_matriz(opera_matriz(matriz_principal, matriz_secundaria))
+# except:
+#     print("Algo deu errado!")
 
+
+matriz = cria_matriz()
+print(calc_det(matriz))
