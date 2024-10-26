@@ -1,11 +1,13 @@
 import turtle as tl
+from abc import abstractmethod
 
 #Classe Base
 class Forma():
 
+    @abstractmethod
     def desenhar(self):
-        tl.pendown()
-        tl.forward(100)
+        #Realiza o desenho de acordo com a forma
+        pass
 
 
 #Classe da forma de círculo
