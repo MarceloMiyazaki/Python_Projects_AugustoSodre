@@ -3,9 +3,9 @@ import turtle as tl
 #Classe Base
 class Forma():
 
-    def desenhar(self, forma):
-        #Método abstrato
-        pass
+    def desenhar(self):
+        tl.pendown()
+        tl.forward(100)
 
 
 #Classe da forma de círculo
@@ -14,6 +14,7 @@ class Circulo(Forma):
     def __init__(self, forma):
         self.forma = forma
 
+    #Sobrescreve método da superclasse Forma
     def desenhar(self):
         tl.color("Red")
 
@@ -30,6 +31,7 @@ class Quadrado(Forma):
     def __init__(self, forma):
         self.forma = forma
 
+    #Sobrescreve método da superclasse Forma
     def desenhar(self):
         tl.color("Black")
 
