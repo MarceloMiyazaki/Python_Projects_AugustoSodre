@@ -1,10 +1,14 @@
+with open("texto.txt" ,"r") as file:
+  text = file.read()
 
-text = "EBBECBAABDBECBAEDADDBADBDEBEDE"
+letterCount = {}
 
-a = text.count("A")
-b = text.count("B")
-c = text.count("C")
-d = text.count("D")
-e = text.count("E")
+#adiciona todas as letras do arquivo txt para um dicionário com o número de ocorrências dela correspondendo ao seu valor
+for i in text:
+  letterCount[i] = letterCount.get(i, 0) + 1
 
-print(f"\nA: {a} \nB: {b} \nC: {c} \nD: {d} \nE: {e}\n")
+text = sorted(set(text))
+
+#devolve as letras e sua respectiva frequência dentro do arquivo de texto
+for i in text:
+  print(i+":", letterCount[i])
